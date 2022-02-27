@@ -26,10 +26,11 @@ public class GpsUtilService {
 			.compile("^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$");
 
 	/**
-	 * Get the user location of a user based on his UUID
+	 * Get the user location of a user based on his userId
 	 * 
-	 * @param userId the UUID
-	 * @return a VisitedLocation model
+	 * @param userId : the userId String in UUID form of the user we want to get his
+	 *               location
+	 * @return VisitedLocation object
 	 * @throws UUIDException
 	 */
 	public VisitedLocation getUserLocationGpsUtil(String userId) throws UUIDException {
@@ -44,9 +45,9 @@ public class GpsUtilService {
 	}
 
 	/**
-	 * Get all the attractions in a form of a list of attractions
+	 * Get a list of all attractions
 	 * 
-	 * @return a list of attractions
+	 * @return Attraction list
 	 */
 	public List<Attraction> getAttractionsGpsUtil() {
 		logger.debug("get Attractions GpsUtil");

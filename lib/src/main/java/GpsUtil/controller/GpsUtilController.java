@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import GpsUtil.exception.UUIDException;
 import GpsUtil.service.GpsUtilService;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
 
 @RestController
 public class GpsUtilController {
-	private Logger logger = LoggerFactory.getLogger(GpsUtilController.class);
+	private Logger logger = LoggerFactory.getLogger("GpsUtilController");
 
 	@Autowired
-	GpsUtilService gpsUtilService;
+	private GpsUtilService gpsUtilService;
 
 	/**
 	 * HTML GET request that returns a visited location
@@ -29,11 +30,9 @@ public class GpsUtilController {
 	 * @return the Visited location model of a specific userId
 	 * @throws UUIDException
 	 */
-	@RequestMapping("/getUserLocation")
-	public VisitedLocation getUserLocationServer(@RequestParam UUID userId) {
-//		logger.debug("Start getUserLocationServer at /getUserLocation for userId : " + userId);
-//		userIdUUID = UUID.fromString(userId);
-		
+	@GetMapping("/getUserLocation")
+	public VisitedLocation getUserLocationGpsUtil(@RequestParam String userId) throws UUIDException {
+		logger.info("Get UserLocation GpsUtil for userId : " + userId );
 		return gpsUtilService.getUserLocationGpsUtil(userId);
 	}
 
@@ -43,9 +42,8 @@ public class GpsUtilController {
 	 * @return a list of all attractions
 	 */
 	@GetMapping("/getAllAttractions")
-	public List<Attraction> getAllAttractionsServer() {
-//		logger.debug("Start getAllAttractionsServer at /getAllAttractions");
-//	 attractionList = 
+	public List<Attraction> getAttractionsGpsUtil() {
+		logger.info("Get Attractions list in GpsUtil");
 		return gpsUtilService.getAttractionsGpsUtil();
 	}
 }

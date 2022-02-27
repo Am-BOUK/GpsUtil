@@ -40,8 +40,8 @@ public class GpsUtilService {
 			logger.error("format UUID of userId invalid!");
 			throw new UUIDException("format UUID userId is invalid!");
 		}
-		UUID attractionIdUUID = UUID.fromString(userId);
-		return gpsUtil.getUserLocation(attractionIdUUID);
+		UUID userIdUUID = UUID.fromString(userId);
+		return gpsUtil.getUserLocation(userIdUUID);
 	}
 
 	/**

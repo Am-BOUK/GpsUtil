@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Locale;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class GpsUtilControllerIT {
 
 	    @Test
 	    public void shouldAccessUserLocation() throws Exception {
-
+	    	Locale.setDefault(Locale.US);
 	        mock.perform(get("/getUserLocation").param("userId", String.valueOf(UUID.randomUUID())))
 	                .andExpect(status().isOk())
 	                .andExpect(content().string(containsString("longitude")))

@@ -3,6 +3,7 @@ package GpsUtilService;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class GpsUtilServiceTest {
 
 	@Test
 	public void getUserLocationGpsUtilTest() throws UUIDException {
-
+		Locale.setDefault(Locale.US);
 		VisitedLocation visitedLocation = gpsUtilService.getUserLocationGpsUtil(String.valueOf(UUID.randomUUID()));
 
 		assertEquals(true, !visitedLocation.equals(null));

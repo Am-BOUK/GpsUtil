@@ -45,4 +45,13 @@ public class GpsUtilController {
 		logger.info("Get Attractions list in GpsUtil");
 		return gpsUtilService.getAttractionsGpsUtil();
 	}
+
+	/**********************
+	 * **************************************************/
+
+	@GetMapping("/")
+	public String index() {
+		return "Greetings from GpsUtil!";
+	}
+
 }
